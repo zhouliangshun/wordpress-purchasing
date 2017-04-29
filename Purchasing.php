@@ -12,7 +12,6 @@ Version: 1.0
 Author URI: http://www.kylins.com
 */
 
-define('WRPATH',dirname(__FILE__));
 
 $pirchasing = new Purchasing();
 
@@ -20,15 +19,15 @@ class Purchasing
 {
     public function __Construct()
     {
-        add_action( 'admin_menu', 'add_purchasing_setting_menu' );
+        add_action( 'admin_menu', array($this,'add_purchasing_setting_menu'));
 
         add_filter( 'single_template', array($this, 'get_custom_post_type_template'));
     }
 
 
     public function add_purchasing_setting_menu(){
-        add_menu_page( '设置', '代购', 'administrator', 'purchasing',null, plugins_url('purchasing/menu-setting.php'),6);
-        add_submenu_page( 'purchasing', "order", '订单', 'administrator', 'purchasing-order', plugins_url('purchasing/menu-orders.php') );
+        add_menu_page( 'purchasing', '代购', 'manage_options', 'purchasing',null, plugins_url('purchasing/menu-setting.php'));
+        add_submenu_page( 'purchasing', "代购订单", '订单', 'manage_options', 'purchasing-order', plugins_url('purchasing/menu-orders.php') );
     }
 
     //end admin page
