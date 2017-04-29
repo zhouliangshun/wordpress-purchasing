@@ -14,6 +14,8 @@ Author URI: http://www.kylins.com
 
 define('WRPATH',dirname(__FILE__));
 
+$pirchasing = new Purchasing();
+
 class Purchasing
 {
     public function __Construct()
@@ -53,7 +55,5 @@ class Purchasing
 
 
 }
-
-new Purchasing;
 
 ?>
