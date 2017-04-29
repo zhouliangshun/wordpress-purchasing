@@ -19,6 +19,7 @@ class Purchasing
 {
     public function __Construct()
     {
+
         add_action( 'admin_menu', array($this,'add_purchasing_setting_menu'));
 
         add_filter( 'single_template', array($this, 'get_custom_post_type_template'));
@@ -27,8 +28,16 @@ class Purchasing
 
     public function add_purchasing_setting_menu(){
 
-        add_menu_page( '设置', '代购', 'manage_options','purchasing','../templates/menu-setting.php');
-        add_submenu_page( 'purchasing', "代购订单", '订单', 'manage_options', 'purchasing-order', '../wordpress-purchasing/menu-orders.php' );
+        add_menu_page( '设置', '代购', 'manage_options','/templates/menu-setting.php');
+        add_submenu_page( '/templates/menu-setting.php', "代购订单", '订单', 'manage_options');
+    }
+
+    public function display_menu_settings(){
+        
+    }
+
+    public function display_menu_orders(){
+
     }
 
     //end admin page
