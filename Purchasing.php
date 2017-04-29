@@ -27,8 +27,6 @@ class Purchasing
 
     public function add_purchasing_setting_menu(){
 
-        add_menu_page( page_title, menu_title, capability, menu_slug, function, icon_url, position )
-
         add_menu_page( '代购', '代购', 'manage_options', 'purchasing',plugins_url('wordpress-purchasing/menu-setting.php',null));
         add_submenu_page( 'purchasing', "代购订单", '订单', 'manage_options', 'purchasing-order', plugins_url('wordpress-purchasing/menu-orders.php') );
     }
