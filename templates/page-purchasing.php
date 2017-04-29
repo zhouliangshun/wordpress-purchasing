@@ -42,7 +42,7 @@ get_header(); ?>
 		                        $posts = new WP_Query();
 		                        $posts -> query($query);
 		                        while ( $posts->have_posts() ) : $posts->the_post(); ?>
-                            <?php get_template_part('page-purchasing-content'); ?>
+                            <?php load_template(dirname( __FILE__ ) .'page-purchasing-content.php'); ?>
 
                         <?php endwhile; // End of the loop. ?>
 

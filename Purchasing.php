@@ -27,7 +27,7 @@ class Purchasing
 
 
     public function add_purchasing_setting_menu(){
-        add_menu_page( '设置', '代购', 'manage_options','purchasing',array( $this, 'display_menu_settings' ));
+        add_menu_page( '代购设置', '代购', 'manage_options','purchasing',array( $this, 'display_menu_settings' ),null,null);
         add_submenu_page( null, "代购订单", '订单', 'manage_options','purchasing',array( $this, 'display_menu_orders' ));
     }
 
