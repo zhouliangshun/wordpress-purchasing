@@ -27,8 +27,10 @@ class Purchasing
 
     public function add_purchasing_setting_menu(){
 
-        add_menu_page( '设置', '代购', 'manage_options',plugins_url('wordpress-purchasing/menu-setting.php'));
-        add_submenu_page( plugins_url('wordpress-purchasing/menu-setting.php'), "代购订单", '订单', 'manage_options', 'purchasing-order', plugins_url('wordpress-purchasing/menu-orders.php') );
+        //add_menu_page( page_title, menu_title, capability, menu_slug, '/', icon_url, position )
+        add_menu_page( '设置', '代购', 'manage_options','purchasing','templates/menu-setting.php');
+        //add_submenu_page( parent_slug, page_title, menu_title, capability, menu_slug, function )
+        add_submenu_page( 'purchasing', "代购订单", '订单', 'manage_options', 'purchasing-order', 'wordpress-purchasing/menu-orders.php' );
     }
 
     //end admin page
