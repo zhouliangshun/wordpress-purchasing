@@ -20,23 +20,15 @@ class Purchasing
 {
     public function __Construct()
     {
-        add_action( 'admin_init', 'init_admin_page' );
+        add_action( 'admin_menu', 'add_purchasing_setting_menu' );
 
-        add_filter( 'single_template', array($this, 'get_custom_post_type_template') );
-    }
-
-
-    //beigin admin page
-    public function init_admin_page(){
-        if(is_admin()){
-            add_action( 'admin_menu', 'add_purchasing_setting_menu' );
-        }
+        add_filter( 'single_template', array($this, 'get_custom_post_type_template'));
     }
 
 
     public function add_purchasing_setting_menu(){
-        add_menu_page( '代购', '设置', 'administrator', '', plugins_url('purchasing/menu-setting.php'), '', 6);
-        add_menu_page( '代购', '订单', 'administrator', '', plugins_url('purchasing/menu-orders.php'), '', 6);
+        add_menu_page( '设置', '代购', 'administrator', '', plugins_url('purchasing/menu-setting.php'), '', 6);
+        add_menu_page( '订单', '代购', 'administrator', '', plugins_url('purchasing/menu-orders.php'), '', 6);
     }
 
     //end admin page
