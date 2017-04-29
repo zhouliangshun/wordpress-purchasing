@@ -27,16 +27,16 @@ class Purchasing
 
 
     public function add_purchasing_setting_menu(){
-
-        add_menu_page( '设置', '代购', 'manage_options','/templates/menu-setting.php');
-        add_submenu_page( null, "代购订单", '订单', 'manage_options','/templates/menu-setting.php',array( $this, 'display_menu_orders' ));
+        add_menu_page( '设置', '代购', 'manage_options','purchasing',array( $this, 'display_menu_settings' ));
+        add_submenu_page( null, "代购订单", '订单', 'manage_options','purchasing',array( $this, 'display_menu_orders' ));
     }
-    // public function display_menu_orders(){
-        
-    // }
+
+    public function display_menu_settings(){
+        load_template(dirname( __FILE__ ) . '/templates/menu-settings.php');
+    }
 
     public function display_menu_orders(){
-        return plugin_dir_url( 'wordpress-purchasing/templates/menu-order.php' );
+         load_template( dirname( __FILE__ ) . '/templates/menu-orders.php');
     }
 
     //end admin page
