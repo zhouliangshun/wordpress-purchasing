@@ -27,8 +27,9 @@ class Purchasing
 
 
     public function add_purchasing_setting_menu(){
-        add_menu_page( '设置', '代购', 'administrator', '', plugins_url('purchasing/menu-setting.php'), '', 6);
-        add_menu_page( '订单', '代购', 'administrator', '', plugins_url('purchasing/menu-orders.php'), '', 6);
+        add_menu_page( '设置', '代购', 'administrator', 'purchasing', 6);
+        add_submenu_page( null, "设置", '设置', 'administrator', 'purchasing', plugins_url('purchasing/menu-setting.php') );
+        add_submenu_page( null, "订单", '订单', 'administrator', 'purchasing', plugins_url('purchasing/menu-orders.php') );
     }
 
     //end admin page
