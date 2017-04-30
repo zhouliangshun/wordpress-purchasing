@@ -45,8 +45,7 @@ class Purchasing
         
         global $post;
 
-        $slug = get_post_meta( $post->ID, '_wp_desired_post_slug');
-        if ($slug == 'purchasing') {
+        if ($post->post_name == 'purchasing') {
           $single_template = dirname( __FILE__ ) . '/templates/page-purchasing.php';
         }
 
