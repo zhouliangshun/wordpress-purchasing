@@ -31,7 +31,7 @@
 
                         <div class="entry-content">
                             <p>参考价: 未知</p>
-                            <a href="<?php the_permalink('') ?>" class="read_more"><?php _e( 'Add Cart', 'travellator' ); ?></a>
+                            <button  class="read_more" data-cart-add="<?php echo get_the_ID() ?>"><?php _e( 'Add Cart', 'travellator' ); ?></button>
                             <?php
                                 wp_link_pages( array(
                                     'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'travellator' ),

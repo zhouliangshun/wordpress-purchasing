@@ -19,7 +19,7 @@ get_header(); ?>
     <div class="page-header-container no-featured" >
     <?php the_post_thumbnail( 'single-post-thumbnail', array( 'class' => 'single-post-thumbnail' ) ); ?>
     	<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<?php get_option('purchasing_status') == '0' ? print '<h1 class="entry-title">对不起! 暂无代购计划</h1>' : the_title( '<h1 class="entry-title">', '</h1>' );?>
         </header><!-- .entry-header -->
     </div>
     
@@ -38,11 +38,16 @@ get_header(); ?>
 			<div class="container">
             	<div class="row">
                 	<div class="col-md-12">
-						<?php $query = array("cat"=>11);
+						<?php 
+						if (get_option('purchasing_status') == '0') return;
+						if(($product_cate = get_category_by_slug( 'product' ))==null) return;
+						$location = get_option( 'purchasing_location');
+			
+						$query = array("cat"=>"$product_cate->term_id,$location");
 		                        $posts = new WP_Query();
 		                        $posts -> query($query);
 		                        while ( $posts->have_posts() ) : $posts->the_post(); ?>
-                            <?php load_template(dirname( __FILE__ ) .'page-purchasing-content.php'); ?>
+                            <?php load_template(dirname( __FILE__ ) .'/page-purchasing-content.php'); ?>
 
                         <?php endwhile; // End of the loop. ?>
 
@@ -53,6 +58,5 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php get_sidebar(); ?>
-
 <?php get_footer(); ?>
 
